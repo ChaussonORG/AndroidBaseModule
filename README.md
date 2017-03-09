@@ -1,21 +1,21 @@
 # AndroidBaseModule
 速道科技有限公司安卓基础组件
 
-### base
+## base
 1. BaseActivity,BaseFragment,BaseView 基类
 2. BundleConst 常量，请修改 app\_name，base\_url
 3. BaseApplication ，初始化应用相关内容
 
-###basicapi（基础API）
+##basicapi（基础API）
 1. 登录，注册，修改密码，找回密码，绑定手机号相应接口和Activity已经写好，只需要更改相应xml布局即可（注意：对应控件id不能更改）
 2. 意见反馈，获取验证码，使用时创建BaseFunctionAPI对象，然后设置相应监听器
 
 
-###common
-+ listview
+##common
+####listview
   ListView,RecyclerView的通用Adapter，RecyclerView的分割线（DividerItemDecoration）
 
-+ util
+####util
   1. AppHelper:获取APP版本名，检查网络连接等
   2. AppManager:Activity管理类
   3. BitmapHelper:图像处理帮助类
@@ -31,12 +31,12 @@
   13. ToolbarUtil:toolbar 工具类
   14. UMShareHelper:友盟分享工具类
   
-+ view(自定义view）
+####view(自定义view）
   1. loadmore:下拉刷新和加载更多的布局
   2. countdown：倒计时（获取手机验证码页面）
   3. CustomScrollView:嵌套recyclerview，解决滑动冲突和滑动惯性消失的问题
   
-+ viewpager
+####viewpager
   1. 不能滑动的viewpager
   2. 自动切换的viewpager
   3. viewpager指示器 
@@ -55,12 +55,12 @@
 + previewfile
   预览文件，目前支持PDF和图片
 
-###http
+##http
 + 网络请求框架，使用Retrofit + OKHTTP
 + 已经封装好缓存和Cookie
 + 通用的请求回调
 
-###other
+##other
 + AndroidGitignore：Gitignore忽略文件，必须在创建工程之前上传至 Git 才起作用
 + GradleReference：Gradle基础配置，包括多渠道打包
 
