@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+
+def cmd = 'git rev-list HEAD --count'
+def initVersionName = '2.0.0'
+def gitVersionCode = cmd.execute().text.trim().toInteger()
+def gitVersionName = initVersionName + '.' + gitVersionCode
+
+
+android {
+    signingConfigs {
+        releaseconfig {
+            keyAlias 'surfingtv'
+            keyPassword '2016surfingtv'
+            storeFile file('/Users/Samuel/Documents/Work/surfingtv.jks')
+            storePassword '2016surfingtv'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+    defaultConfig {
+        applicationId "jingjiawenhua.surfingtv"
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode gitVersionCode
+        versionName gitVersionName
+        multiDexEnabled true
+    }
+
+    productFlavors {
+        xiaomi {}
+        baidu {}
+        wandoujia {}
+        yingyongbao {}
+    }
+
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+
+            versionNameSuffix "-debug"
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            minifyEnabled false
+            signingConfig signingConfigs.releaseconfig
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
+
+            applicationVariants.all { variant ->
+
+                variant.outputs.each { output ->
+
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        // 输出apk名称为surfingtv_v1.0_2015-01-15_wandoujia.apk
+                        def imageName = "surfingtv_${variant.buildType.name}_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
+                        output.outputFile = new File(outputFile.parent, imageName)
+                    }
+                }
+            }
+
+        }
+    }
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile project(':basemodule')
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:support-v4:23.3.0'
+
+}

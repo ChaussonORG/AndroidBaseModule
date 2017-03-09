@@ -1,0 +1,88 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
+    }
+}
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+//apply plugin: 'realm-android'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.2 '
+
+    defaultConfig {
+//        applicationId "com.sudao.basemodule"
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+    //添加部分
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main() {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:design:25.1.0'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.squareup.retrofit2:retrofit:2.0.1'
+    compile 'com.squareup.okhttp3:okhttp:3.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.0-beta4'
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0'
+    compile 'com.daimajia.numberprogressbar:library:1.2@aar'
+    //    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'com.lzy.widget:ninegridview:0.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.joanzapata.pdfview:android-pdfview:1.0.4@aar'
+    compile 'com.github.Aspsine:SwipeToLoadLayout:1.0.4'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    //    compile(project(':social_sdk_library_project')) {
+
+    //        exclude module: 'support-v4'
+
+    //    }
+    compile files('libs/hyphenatechat_3.2.2.jar')
+    compile files('libs/SocialSDK_WeiXin_Full.jar')
+    compile files('libs/libammsdk.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    compile files('libs/HwPush_SDK_V2705_nomap.jar')
+    compile files('libs/MiPush_SDK_Client_2_2_19.jar')
+}
