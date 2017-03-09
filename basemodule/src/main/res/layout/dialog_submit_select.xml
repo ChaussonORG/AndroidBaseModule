@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color60000000">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/shape_dialog"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_dialog_submit_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:paddingBottom="4dp"
+                    android:paddingTop="8dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x_large"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_submit_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:paddingBottom="16dp"
+                    android:paddingTop="8dp"
+                    android:text=""
+                    android:textColor="#666"
+                    android:textSize="@dimen/med"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#ddd"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <Button
+                    android:id="@+id/btn_dialog_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:paddingTop="8dp"
+                    android:text=""
+                    android:textColor="@color/colorAccent"/>
+
+                <View
+                    android:layout_width="0.1dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="0.01"
+                    android:background="#ddd"></View>
+
+
+                <Button
+                    android:id="@+id/btn_dialog_cacel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/colorAccent"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
